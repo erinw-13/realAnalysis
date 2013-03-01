@@ -1,0 +1,184 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{12pt}
+\pagestyle{fancy}
+
+%set-up page dimentions
+\usepackage[top=1.5 in, bottom = 1.5 in ,left = 1.5 in, right = 1.5in]{geometry}
+
+\setlength{\parskip}{12pt}  % 12 pt = space between paragraphs
+\setlength{\parindent}{0pt} % 0 pt  = indentation
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{ifthen}
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{psfrag}
+\usepackage{graphpap}
+\renewcommand{\P}{\text{P}}
+\newcommand{\C}{\text{C}}
+
+
+% Allows hyperlinks if compiled with pdflatex
+\usepackage{hyperref}
+\hypersetup{colorlinks}
+\usepackage{color}
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{darkblue}{rgb}{0,0,0.5}
+\hypersetup{ colorlinks,
+                linkcolor=darkblue,
+                filecolor=darkgreen,
+                urlcolor=darkblue,
+                citecolor=darkblue }
+%hyperlink example is: \href{http://www.google.com}{google}
+
+
+%This environment establishes the header
+\newenvironment{header}[2]{
+\rhead{#1}
+\lhead{#2}
+\rfoot{}
+\renewcommand{\headrulewidth}{0pt}  %use for a solid line at head
+\renewcommand{\footrulewidth}{0pt}  %use for solid line at bottom
+}
+
+
+
+\newcommand{\natnums}{{\mathbb N}}
+\newcommand{\algnums}{{\mathbb A}}
+\newcommand{\rationals}{{\mathbb Q}}
+\newcommand{\reals}{{\mathbb R}}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\unorm}[1]{{\left|\left|#1\right|\right|_u}}
+\newcommand{\scriptR}{\mathcal{R}}
+\newcommand{\scriptP}{\mathcal{P}}
+\newcommand{\taggedP}{\dot{\mathcal{P}}}
+\newcommand{\scriptQ}{\mathcal{Q}}
+\newcommand{\taggedQ}{\dot{\mathcal{Q}}}
+
+
+\begin{document}
+
+\section{Definitions}
+\begin{description}
+\item Intervals \label{interval}\hfill \\
+	An interval is a set \(I\) where if \(a,b\in I\) then \(\forall c\) such that \(a<b<c,\; c\in I\).
+
+\item Compact \label{compact}\hfill \\
+	A set is compact if it is \hyperref[closed]{closed} and \hyperref[bounded]{bounded}.
+	
+\item Closed \label{closed}\hfill \\
+There are a number of definitions for \(A\subseteq \mathbb{R}\) being closed:
+\begin{itemize}
+\item A set is closed if it contains all of its limit points.
+\item \(\forall \{a_n\} \) such that \(a_n \in A\), if \(\lim_{n\to\infty}a_n=a\), then \(a\in A.\)
+\item \(A\) contains all of its accumulation points.
+\item The complement of \(A\) is open (int \(\mathcal{U}\).)
+\end{itemize}
+
+\item Bounded \label{bounded}\hfill \\
+\begin{itemize}
+\item The set \(A\) is bounded if \(\exists M\in\mathbb{R}\) such that \(\forall a\in A, |a|<M.\)
+\item The function \(f:A\to \mathbb{R}\) is bounded if \(\exists M\in\mathbb{R}\) such that \(\forall a\in A, |f(a)|<M.\)
+\end{itemize}
+
+\item Bounded Function Set \label{setofboundedfunctions}\hfill \\
+If \(A\subseteq\mathbb{R}\), \(b(A)\) is the set of all bounded functions from \(A\to\mathbb{R}\).
+
+\item Continuous Function Set \label{setofcontinuousfunctions}\hfill \\
+If \(A\subseteq\mathbb{R}\), \(c(A)\) is the set of all continuous functions from \(A\to\mathbb{R}\).
+
+\item Partition \label{partition}\hfill \\
+\(\mathcal{P}=(x_0, x_1, \dots, x_n)\) is said to be a partition of \([a,b]\) if \(a=x_0, x_1, \dots, x_n=b\).
+
+\item Tagged Partition \label{taggedpartition}\hfill \\
+\(\dot{\mathcal{P}}=(x_0, x_1, \dots, x_n)\) is said to be a tagged partition of \([a,b]\) if it is a partition and \(t_i\in [x_{i-1}, x_i]\).
+
+\item Riemann Sum \label{riemannsum}\hfill \\
+If \(f\in b[a,b]\) and \(\dot{\mathcal{P}}\) is a tagged partition, then \[s(f,\dot{\mathcal{P}}) = \sum_{i=1}^n f(t_i)(x_i-x_{i-1})\] is called a Riemann sum of \(f\) for tagged partition \(\dot{\mathcal{P}}\).
+
+\item Riemann Integrable \label{riemannintegrable}\hfill \\
+Let \(f\in b[a,b]\), we say \(f\) is Riemann Integrable, written \(f\in \mathcal{R}[a,b]\) if \(\exists L\in\mathbb{R}\) such that \(\forall \epsilon>0,\;\exists\delta_\epsilon>0\) such that 
+\[|s(f, \dot{\mathcal{P}}) - L| < \epsilon \text{ whenever }||\dot{\mathcal{P}}|| < \delta_\epsilon.\]
+Thus we can say that 
+\[\int_a^b f = L.\]
+
+\item Norm of a Partition \label{partitionnorm}\hfill \\
+If \(\mathcal{P}\) is a partition of \([a,b]\) then 
+\[||\mathcal{P}|| = \max_{1\leq i\leq n}\{x_1-x_0, x_2-x_1, \dots, x_i- x_{i-1},\dots, x_n-x_{n-1}\}\]
+ is called the "norm" of \(\mathcal{P}.\)
+
+\item Indicator Function\label{indicator}\hfill \\
+
+\item Lipschitz Continuous\label{Lipschitz}\hfill \\
+
+\item Pointwise Convergence of Functions\label{pointwiseConv}\hfill \\
+
+\item Uniform Convergence of Functions\label{uniformConv}\hfill \\
+    
+\item Uniform Norm\label{unorm}\hfill \\
+
+\item Cauchy wrt Uniform Norm\hfill \\
+    Let \(\{f_n\}\) be a sequence with \(f_n\in b(A) \forall n\).  \\
+    We say \(\{f_n\}\) is Cauchy wrt the uniform norm if \(\forall\;\epsilon >0 \,\exists\,N\in\natnums\) such that 
+    if \(n,m\geq N,\) then
+    \[\norm{f_n-f_m}_u < \epsilon.\]
+\end{description}
+
+\section{Theorems}
+\begin{enumerate}
+\item Intermediate Value Theorem \label{IVT}\hfill \\
+
+\item Bolzano-Weirstrauss Theorem \label{BWT}\hfill \\
+
+\item Riemann Integrable Function Uniqueness \label{RIFU}\hfill \\
+
+\item Squeeze Theorem \label{Squeeze}\hfill \\
+
+\item Cauchy Criterion for Integration  \label{CauchyCritInt}\hfill \\
+
+\item All continuous functions are Riemann Integrable \label{continuousEqR}\hfill \\
+
+\item Monotonic functions with the reals as an image are Riemann Integrable \label{monotonicEqR}\hfill \\
+
+\item Integral of an interval equals the sum of the integrals between two "connected" intervals\hfill \\
+        Suppose \(f:[a,b]\to\reals\) and \(c\in(a,b)\), then \(f\in\scriptR[a,b]\) iff \(f\in\scriptR[a,c]\) and \(f\in\scriptR[c,b]\).
+
+\item Fundamental Theorem of Calculus, part I\label{FTC1}\hfill \\
+
+\item Fundamental Theorem of Calculus, part II\label{FTC2}\hfill \\
+
+\item Lipschitz Continuity Criteria\label{LipschitzCont}\hfill \\
+
+    \item Change of Variables (substitution)\label{usub}\hfill \\
+
+    \item Integration by Parts\label{intbyparts}\hfill \\
+
+    \item Sequences that imply continuity\label{seqimpc}\hfill \\
+        If \(\{f_n\}\) is a sequence of functions \(f_n\in c(A)\) and \(f_n\stackrel{u}{\to} f\) on \(A\), then \(f\in c(A)\).
+
+    \item More with sequences,  I guess these don't all need names... or labels.\hfill \\
+        Suppose for all \(n\; f_n\in\scriptR[a,b]\) and \(f_n\stackrel{u}{\to} f\) on \([a,b]\).  Then \(f\in\scriptR[a,b]\) and \(\displaystyle{\lim_{x\to\infty}\int_a^bf_n = \int_a^b f.}\).
+
+    \item \hfill \\
+        Every Cauchy sequence in \(b(A)\) converges in \(b(A)\) with respect to \(\norm{\cdot}_u\).  
+        That is, \(b(A)\) is complete wrt \(\norm{\cdot}_u.\)
+
+\end{enumerate}
+
+
+
+
+\section{Examples}
+Add examples in class or other examples you may think of here
+
+\section{Homework}
+Add homework problems here.  Not necessarily every one, but the ones in particular that would make great examples.
+The homework problems that give a theorem, or lemma, or other super-cool results, feel free to put in the Theorems section.
+
+\end{document}
