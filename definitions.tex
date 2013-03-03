@@ -72,7 +72,7 @@ Start filling in and adding!  Github location is: \href{http://github.com/ottoco
 
 \item Compact \label{compact}\hfill \\
 	A set is compact if it is \hyperref[closed]{closed} and \hyperref[bounded]{bounded}.
-	
+
 \item Closed \label{closed}\hfill \\
 There are a number of definitions for \(A\subseteq \mathbb{R}\) being closed:
 \begin{itemize}
@@ -91,8 +91,21 @@ There are a number of definitions for \(A\subseteq \mathbb{R}\) being closed:
 \item Bounded Function Set \label{setofboundedfunctions}\hfill \\
 If \(A\subseteq\mathbb{R}\), \(b(A)\) is the set of all bounded functions from \(A\to\mathbb{R}\).
 
+\item Cauchy \label{cauchy}\hfill\\
+A sequence $\{A_n\}$ is said to be cauchy if and only if $\forall \epsilon>0$, $\exists N\in \natnums$ such that $n,m>N$ $$|A_n-A_m|<\epsilon$$
+
 \item Continuous Function Set \label{setofcontinuousfunctions}\hfill \\
 If \(A\subseteq\mathbb{R}\), \(c(A)\) is the set of all continuous functions from \(A\to\mathbb{R}\).
+
+\item Convergence of $f_n$ uniformly on $A$ \label{f_nuniformconvergence}\hfill \\
+If $f_n:A\to \reals$ and $f:A_0\to \reals$ we say $f_n \displaystyle{\to^u} A$, $f_n$ converges uniformly on $A$, if $||f_n-f||_u\to 0$
+
+\item Differentiable Function \label{differentiable}\hfill\\
+If $g$ is differentiable at $a$ with $f'(a)=L$ if $\displaystyle{lim_{h\to 0}|\frac{f(a+h)-f(h)}{h}|=L}$.
+
+or
+
+$\forall \epsilon>0$, $\exists \delta>0$ such that if $|h|<\delta$ then $\displaystyle{|\frac{f(a+h)-f(h)}{h}|-L<\epsilon}$
 
 \item Partition \label{partition}\hfill \\
 \(\mathcal{P}=(x_0, x_1, \dots, x_n)\) is said to be a partition of \([a,b]\) if \(a=x_0, x_1, \dots, x_n=b\).
@@ -116,28 +129,40 @@ If \(\mathcal{P}\) is a partition of \([a,b]\) then
 
 \item Indicator Function\label{indicator}\hfill \\
 
+
 \item Lipschitz Continuous\label{Lipschitz}\hfill \\
 
 \item Pointwise Convergence of Functions\label{pointwiseConv}\hfill \\
+$\forall x \in E$ and $\forall \epsilon > 0$, $\exists N \in N$ so that $\forall n\geq N$ we
+have$ |fn(x)- f(x)| < \epsilon$
 
 \item Uniform Convergence of Functions\label{uniformConv}\hfill \\
+if for every $\epsilon > 0$ $\exists N$ so that $n \geq N$
+implies that $|fn(x) -f(x)| < \epsilon$ holds for all $x\in E$.
     
 \item Uniform Norm\label{unorm}\hfill \\
+Let $f$ be bounded on $A$ then the uniform norm, $||f||_u$, $||f||_\infty$, $||f||_A$, $$||f||_u=\sup\{|f(x)|:x\in A\}$$ is the smallest upper bound for $f$ on $A$. 
 
 \item Cauchy wrt Uniform Norm\hfill \\
     Let \(\{f_n\}\) be a sequence with \(f_n\in b(A) \forall n\).  \\
     We say \(\{f_n\}\) is Cauchy wrt the uniform norm if \(\forall\;\epsilon >0 \,\exists\,N\in\natnums\) such that 
     if \(n,m\geq N,\) then
     \[\norm{f_n-f_m}_u < \epsilon.\]
+    
 \end{description}
 
 \section{Theorems}
 \begin{enumerate}
-\item Intermediate Value Theorem \label{IVT}\hfill \\
-
 \item Bolzano-Weirstrauss Theorem \label{BWT}\hfill \\
 
+\item Heinel -Borel Theorem \label{HBT}\hfill \\
+
+$K\subseteq \reals$ is compact if and only if every open cover has a finite subcover.
+
+\item Intermediate Value Theorem \label{IVT}\hfill \\
+
 \item Riemann Integrable Function Uniqueness \label{RIFU}\hfill \\
+Suppose $f\in \scriptR[a,b]$ then $\displaystyle{\int_a^b}f$ is unique.
 
 \item Squeeze Theorem \label{Squeeze}\hfill \\
 
@@ -153,6 +178,7 @@ If \(\mathcal{P}\) is a partition of \([a,b]\) then
 \item Fundamental Theorem of Calculus, part I\label{FTC1}\hfill \\
 
 \item Fundamental Theorem of Calculus, part II\label{FTC2}\hfill \\
+If $f\in \scriptR[a,b]$ and $c_0\in[a,b]$ and $F(x)=\displaystyle{\int_{c_0}^x f}$ and $f(c)\in c[a,b]$ then $F$ is differentiable at $c$ and $F'(c)=f(c)$.
 
 \item Lipschitz Continuity Criteria\label{LipschitzCont}\hfill \\
 
@@ -169,6 +195,9 @@ If \(\mathcal{P}\) is a partition of \([a,b]\) then
     \item \hfill \\
         Every Cauchy sequence in \(b(A)\) converges in \(b(A)\) with respect to \(\norm{\cdot}_u\).  
         That is, \(b(A)\) is complete wrt \(\norm{\cdot}_u.\)
+        
+      \item Triangle inequality for uniform norm\label{triinequality}\hfill \\
+      $\forall x\in A$ where $||f||_u+||g||_u$ is an upper bound for $\{|f(x)|\}$ $$||f+g||_u\leq ||f||_u+||g||_u$$
 
 \end{enumerate}
 
